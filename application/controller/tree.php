@@ -3,7 +3,7 @@
 /**
 * Class ASCII Stars shape
 */
-class Star extends Controller
+class Tree extends Controller
 {
 	private $size = null;
 
@@ -18,18 +18,18 @@ class Star extends Controller
 
 	public static function create($size)
 	{
-		return new Star($size);
+		return new Tree($size);
 	}
 
 	public function index($params=null) {
-		$data = $this->makeStar();
+		$data = $this->makeTree();
 
-		if ( file_exists(APP . 'view/starView.php')) {
-			require APP . 'view/starView.php';
+		if ( file_exists(APP . 'view/treeView.php')) {
+			require APP . 'view/treeView.php';
 		}
 	}
 
-	public function makeStar() {
+	public function makeTree() {
 		$size = 5;
 	    $starsData = [];
 
@@ -42,7 +42,7 @@ class Star extends Controller
 	}
 
 	public function getStars( $num ) {
-	    return str_repeat("*", $num);
+	    return str_repeat("+", $num);
 	}
 
 	public function prependSpace( $lineNumber, $inputLines ) {

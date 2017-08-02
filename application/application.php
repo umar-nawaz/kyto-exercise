@@ -22,7 +22,7 @@ class Application
 				$this->controller->index($this->params);
 			}
 			else{
-				//header('location: ' . URL . ' 404 problem');
+				header('location: ' . URL . ' 404 problem');
 			}
 		} else {
 			//$this->do_default();
