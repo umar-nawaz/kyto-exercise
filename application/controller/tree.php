@@ -5,16 +5,14 @@
 */
 class Tree extends Controller
 {
-	private $size = null;
-	private $blockChar = 'X';
+	private $brick = 'X';
 	private $wrapChar = '+';
 
-	function __construct($size=null) {
+	function __construct($params=null) {
+		parent::__construct($params);
 
-		if ( isset($size) ) {
-			$this->size = $size;
-		} else {
-			$this->size = 5;
+		if ( isset($params['brick']) ) {
+			$this->brick = $params['brick'];
 		}
 	}
 
@@ -27,18 +25,21 @@ class Tree extends Controller
 		$data = $this->makeTree();
 		$data = $this->wrapTree($data);
 
-		if ( file_exists(APP . 'view/starView.php')) {
-			require APP . 'view/starView.php';
+		if ( file_exists(APP . 'view/view.php')) {
+			include_once APP . 'view/view.php';
+			$this->view = new View($data);
+			
+			$this->view->render();
 		}
 	}
 
 	public function makeTree() {
-		$size = 5;
+		$size = $this->size - 1; // 1 top line is optionaly added later in wrapTree()
 	    $starsData = [];
 
 	    for($lineNum = 0, $bricks = 1; $lineNum < $size; $lineNum++, $bricks++) {
 
-	        $starsData[$lineNum] = $this->prependSpace($lineNum, $size) . $this->getStars( $lineNum + $bricks );
+	        $starsData[$lineNum] = $this->addSpace($lineNum) . $this->getBricks( $lineNum + $bricks );
 	    }
 
 	    return $starsData;
@@ -46,20 +47,21 @@ class Tree extends Controller
 
 	public function wrapTree($treeData)
 	{
+		if (count($treeData) > 0) {
+	    	array_unshift($treeData, str_replace($this->brick, $this->wrapChar, $treeData[0]) );
+	    }
 
-	    array_unshift($treeData, str_replace($this->blockChar, $this->wrapChar, $treeData[0]) );
-	    
 		return $treeData;
 	}
 
-	public function getStars( $num ) {
-	    return str_repeat($this->blockChar, $num);
+	public function getBricks( $num ) {
+	    return str_repeat($this->brick, $num);
 	}
 
-	public function prependSpace( $lineNumber, $inputLines ) {
+	public function addSpace( $lineNumber ) {
 	    // the formula calculates the number of spaces/dashes 
 	    // that are added at start of each line according to current line number
-	    $spaces = $inputLines - $lineNumber -1;
+	    $spaces = $this->size - $lineNumber -2;
 	    
 	    return str_repeat(" ", $spaces);
 	}

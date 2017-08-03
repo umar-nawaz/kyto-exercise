@@ -5,16 +5,22 @@
 */
 class Controller
 {
-    public $model = null;
+	protected $size = null;
 
-    function __construct() {
+    public function __construct($params=null) {
+		include_once 'controller/constants.php';
 
-        $this->loadModel();
-    }
-
-    public function loadModel() {
-
-        require APP . 'model/model.php';
-        $this->model = new Model();
+		if (isset($params['size'])) {
+			
+			if (isset( Constants::SIZE[$params['size']] )) {
+				$this->size = Constants::SIZE[$params['size']];
+			} else {
+				 // just a random medium size
+				$this->size = Constants::SIZE['M'];
+			}
+		} else {
+			 // just a random medium size
+			$this->size = Constants::SIZE['M'];
+		}
     }
 }

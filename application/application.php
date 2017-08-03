@@ -10,28 +10,7 @@ class Application
 	
 	function __construct()
 	{
-        $this->setProperties();
-
-		if( isset($this->controller) )
-		{
-			if( file_exists(APP . 'controller/' . $this->controller . '.php'))
-			{
-				require APP . 'controller/' . $this->controller . '.php';
-            	$this->controller = new $this->controller();
-				
-				$this->controller->index($this->params);
-			}
-			else{
-				header('location: ' . URL . ' 404 problem');
-			}
-		} else {
-			//$this->do_default();
-		}
-	}
-
-	public function setProperties()
-	{
-		if (isset($_GET['shape'])) {
+        if (isset($_GET['shape'])) {
 			$this->controller = $_GET['shape'];
 		}
 
@@ -41,9 +20,51 @@ class Application
 			if (isset($parts['query'])) {
 				parse_str($parts['query'], $query);
 				$this->params = $query;
-			} else {
-				$this->params = array('size' => 5 );
 			}
+		}
+
+		$this->run();
+	}
+
+	public function run()
+	{
+		
+		if( isset($this->controller) )
+		{
+			if( file_exists(APP . 'controller/' . $this->controller . '.php'))
+			{
+				require APP . 'controller/' . $this->controller . '.php';
+            	$this->controller = $this->controller::create($this->params);
+				
+				$this->controller->index();
+			}
+			else{
+				header('location: ' . URL . ' (Please check your request parameters)');
+			}
+		} else {
+			$this->defaultAction();
+		}
+	}
+
+	public function defaultAction()
+	{
+		$starController = 'star';
+		$treeController = 'tree';
+
+		if( file_exists(APP . 'controller/'. $starController . '.php'))
+		{
+			require APP . 'controller/'. $starController . '.php';
+        	$this->controller = $starController::create($this->params);
+			
+			$this->controller->index();
+		}
+
+		if( file_exists(APP . 'controller/'. $treeController . '.php'))
+		{
+			require APP . 'controller/'. $treeController . '.php';
+        	$this->controller = $treeController::create($this->params);
+			
+			$this->controller->index();
 		}
 	}
 }
