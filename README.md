@@ -1,2 +1,2 @@
 # kyto-exercise
-This repository contains ASCII patterns task for coding evaluation.
+A simple php web application that shows some ASCII star patterns accrding user's input for different sizes.  
