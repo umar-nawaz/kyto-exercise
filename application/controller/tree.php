@@ -5,9 +5,6 @@
 */
 class Tree extends Controller
 {
-	private $brick = 'X';
-	private $wrapChar = '+';
-
 	function __construct($params=null) {
 		parent::__construct($params);
 
@@ -25,12 +22,7 @@ class Tree extends Controller
 		$data = $this->makeTree();
 		$data = $this->wrapTree($data);
 
-		if ( file_exists(APP . 'view/view.php')) {
-			include_once APP . 'view/view.php';
-			$this->view = new View($data);
-			
-			$this->view->render();
-		}
+		$this->renderView($data);
 	}
 
 	public function makeTree() {

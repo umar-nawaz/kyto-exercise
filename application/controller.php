@@ -6,6 +6,9 @@
 class Controller
 {
 	protected $size = null;
+	protected $brick = 'X';
+	protected $wrapChar = '+';
+	protected $view = null;
 
     public function __construct($params=null) {
 		include_once 'controller/constants.php';
@@ -22,5 +25,19 @@ class Controller
 			 // just a random medium size
 			$this->size = Constants::SIZE['M'];
 		}
+
+		if ( isset($params['brick']) ) {
+			$this->brick = $params['brick'];
+		}
     }
+
+	public function renderView($data) {
+
+		if ( file_exists(APP . 'view/view.php')) {
+			include_once APP . 'view/view.php';
+			$this->view = new View($data);
+
+			$this->view->render();
+		}
+	}
 }

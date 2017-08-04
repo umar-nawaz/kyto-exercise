@@ -10,4 +10,5 @@ class Constants
 					'M' => 7,
 					'L' => 11
 				);
+	const SHAPES = array('star', 'tree');
 }

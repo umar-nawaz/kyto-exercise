@@ -48,23 +48,18 @@ class Application
 
 	public function defaultAction()
 	{
-		$starController = 'star';
-		$treeController = 'tree';
+		include_once 'controller/constants.php';
+		$shapes = Constants::SHAPES;
 
-		if( file_exists(APP . 'controller/'. $starController . '.php'))
-		{
-			require APP . 'controller/'. $starController . '.php';
-        	$this->controller = $starController::create($this->params);
+		foreach ($shapes as $key => $controller) {
 			
-			$this->controller->index();
-		}
-
-		if( file_exists(APP . 'controller/'. $treeController . '.php'))
-		{
-			require APP . 'controller/'. $treeController . '.php';
-        	$this->controller = $treeController::create($this->params);
-			
-			$this->controller->index();
+			if( file_exists(APP . 'controller/'. $controller . '.php'))
+			{
+				require APP . 'controller/'. $controller . '.php';
+	        	$this->controller = $controller::create($this->params);
+				
+				$this->controller->index();
+			}
 		}
 	}
 }

@@ -5,10 +5,6 @@
 */
 class Star extends Controller
 {
-	private $brick = 'X';
-	private $wrapChar = '+';
-	private $view = null;
-
 	function __construct($params=null) {
 		parent::__construct($params);
 
@@ -26,12 +22,7 @@ class Star extends Controller
 		$data = $this->makeStar();
 		$data = $this->wrapStar($data);
 
-		if ( file_exists(APP . 'view/view.php')) {
-			include_once APP . 'view/view.php';
-			$this->view = new View($data);
-
-			$this->view->render();
-		}
+		$this->renderView($data);
 	}
 
 	public function makeStar() {
