@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
 /**
 * Class ASCII Stars shape
 */
 class Star extends Controller
 {
-	function __construct($params=null) {
+	function __construct( array $params=null ) {
 		parent::__construct($params);
 
 		if ( isset($params['brick']) ) {
@@ -13,7 +14,7 @@ class Star extends Controller
 		}
 	}
 
-	public static function create($params=null)
+	public static function create( array $params=null )
 	{
 		return new Star($params);
 	}
@@ -25,7 +26,7 @@ class Star extends Controller
 		$this->renderView($data);
 	}
 
-	public function makeStar() {
+	public function makeStar(): array {
 		// Remaining half of Diamond is built just by fliping it. 
 		//And top/bottom lines are added in wrapStar()
 		$size = ($this->size / 2) - 1; 
@@ -50,8 +51,7 @@ class Star extends Controller
 	    return $starsData;
 	}
 
-	public function wrapStar($treeData)
-	{
+	public function wrapStar( array $treeData): array {
 		if (count($treeData) > 0) {
 				
 		    array_unshift($treeData, str_replace($this->brick, $this->wrapChar, $treeData[0]) );
@@ -68,11 +68,11 @@ class Star extends Controller
 		return $treeData;
 	}
 
-	public function getBricks( $num ) {
+	public function getBricks(int $num ): string {
 	    return str_repeat($this->brick, $num);
 	}
 
-	public function addSpaces( $spaces) {
+	public function addSpaces(int $spaces): string {
 
 	    if($spaces == 0) {
 	    	return str_repeat(' ', $this->size -3);

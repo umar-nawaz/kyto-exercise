@@ -12,10 +12,15 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/panique/mini/issues",
+        "issues": "https://github.com/umar-nawaz/kyto-exercise",
         "source": "https://github.com/umar-nawaz/kyto-exercise"
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psa-4": {
+            "Ascii\\": "application/"
+        }
     }
 }

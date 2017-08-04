@@ -14,6 +14,6 @@ class View
 
 	public function render()
 	{
-		require 'templates/shapeView.php';
+		require 'templates/ShapeView.php';
 	}
 }

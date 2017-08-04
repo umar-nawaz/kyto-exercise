@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /**
 * Application main class
 */
@@ -48,18 +48,22 @@ class Application
 
 	public function defaultAction()
 	{
-		include_once 'controller/constants.php';
-		$shapes = Constants::SHAPES;
+		try {
+			include_once 'controller/Constants.php';
+			$shapes = Constants::SHAPES;
 
-		foreach ($shapes as $key => $controller) {
-			
-			if( file_exists(APP . 'controller/'. $controller . '.php'))
-			{
-				require APP . 'controller/'. $controller . '.php';
-	        	$this->controller = $controller::create($this->params);
+			foreach ($shapes as $key => $controller) {
 				
-				$this->controller->index();
+				if( file_exists(APP . 'controller/'. $controller . '.php'))
+				{
+					require APP . 'controller/'. $controller . '.php';
+		        	$this->controller = $controller::create($this->params);
+					
+					$this->controller->index();
+				}
 			}
+		} catch  (Exception $e) {
+    		echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
 	}
 }

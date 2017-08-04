@@ -1,11 +1,12 @@
 <?php
+declare(strict_types=1);
 
 /**
 * Class ASCII Tree shape
 */
 class Tree extends Controller
 {
-	function __construct($params=null) {
+	function __construct( array $params=null ) {
 		parent::__construct($params);
 
 		if ( isset($params['brick']) ) {
@@ -18,14 +19,14 @@ class Tree extends Controller
 		return new Tree($size);
 	}
 
-	public function index($params=null) {
+	public function index( array $params=null ) {
 		$data = $this->makeTree();
 		$data = $this->wrapTree($data);
 
 		$this->renderView($data);
 	}
 
-	public function makeTree() {
+	public function makeTree(): array {
 		$size = $this->size - 1; // 1 top line is optionaly added later in wrapTree()
 	    $starsData = [];
 
@@ -37,8 +38,7 @@ class Tree extends Controller
 	    return $starsData;
 	}
 
-	public function wrapTree($treeData)
-	{
+	public function wrapTree( array $treeData ): array {
 		if (count($treeData) > 0) {
 	    	array_unshift($treeData, str_replace($this->brick, $this->wrapChar, $treeData[0]) );
 	    }
@@ -46,11 +46,11 @@ class Tree extends Controller
 		return $treeData;
 	}
 
-	public function getBricks( $num ) {
+	public function getBricks(int $num ): string {
 	    return str_repeat($this->brick, $num);
 	}
 
-	public function addSpace( $lineNumber ) {
+	public function addSpace(int $lineNumber ): string {
 	    // the formula calculates the number of spaces/dashes 
 	    // that are added at start of each line according to current line number
 	    $spaces = $this->size - $lineNumber -2;

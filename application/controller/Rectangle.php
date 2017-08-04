@@ -5,7 +5,7 @@
 */
 class Rectangle extends Controller
 {
-	function __construct($params=null) {
+	function __construct( array $params=null ) {
 		parent::__construct($params);
 	}
 
@@ -14,13 +14,13 @@ class Rectangle extends Controller
 		return new Rectangle($size);
 	}
 
-	public function index($params=null) {
+	public function index( array $params=null ) {
 		$data = $this->makeRect();
 
 		$this->renderView($data);
 	}
 
-	public function makeRect() {
+	public function makeRect(): array {
 	    $starsData = [];
 
 	    for($lineNum = 0; $lineNum < $this->size; $lineNum++) {

@@ -1,17 +1,18 @@
 <?php
+declare(strict_types=1);
 
 /**
 * Controller main class
 */
-class Controller
+abstract class Controller
 {
 	protected $size = null;
 	protected $brick = 'X';
 	protected $wrapChar = '+';
 	protected $view = null;
 
-    public function __construct($params=null) {
-		include_once 'controller/constants.php';
+    public function __construct( array $params=null ) {
+		include_once 'controller/Constants.php';
 
 		if (isset($params['size'])) {
 			
@@ -31,13 +32,15 @@ class Controller
 		}
     }
 
-	public function renderView($data) {
+	public function renderView(array $data) {
 
-		if ( file_exists(APP . 'view/view.php')) {
-			include_once APP . 'view/view.php';
+		if ( file_exists(APP . 'view/View.php')) {
+			include_once APP . 'view/View.php';
 			$this->view = new View($data);
 
 			$this->view->render();
 		}
 	}
+
+	abstract function index();
 }
