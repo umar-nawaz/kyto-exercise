@@ -12,7 +12,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/umar-nawaz/kyto-exercise",
+        "issues": "https://github.com/umar-nawaz/kyto-exercise/issues",
         "source": "https://github.com/umar-nawaz/kyto-exercise"
     },
     "require": {

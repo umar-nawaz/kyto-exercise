@@ -5,6 +5,7 @@ define('APP', ROOT . 'application' . DIRECTORY_SEPARATOR);
 
 require APP . 'config/config.php';
 
+/* TODO: setup autoload and namespace instead. */
 require APP . 'Application.php';
 require APP . 'Controller.php';
 

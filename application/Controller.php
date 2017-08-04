@@ -2,12 +2,18 @@
 declare(strict_types=1);
 
 /**
-* Controller main class
+* Shape Controller class
 */
 abstract class Controller
 {
+
+	/**
+	* Common Properties for all shapes
+	*/
 	protected $size = null;
-	protected $brick = 'X';
+
+	/* $brick is building block of every shape and can accept user's given value.*/
+	protected $brick = 'X';	
 	protected $wrapChar = '+';
 	protected $view = null;
 
@@ -32,6 +38,10 @@ abstract class Controller
 		}
     }
 
+	/**
+	* Function: Get data and pass it to View, to though it on some Template 
+	* Can be overriden in Child to give a custom View/Templates
+	*/
 	public function renderView(array $data) {
 
 		if ( file_exists(APP . 'view/View.php')) {
@@ -42,5 +52,9 @@ abstract class Controller
 		}
 	}
 
+
+	/**
+	* Added so that every new shape class implement it.
+	*/
 	abstract function index();
 }
