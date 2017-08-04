@@ -1,0 +1,26 @@
+{
+    "name": "umar-nawaz/kyto-exercise",
+    "type": "project",
+    "description": "A simple PHP application for creating ASCII patterns",
+    "keywords": ["skeleton", "ascii", "application"],
+    "homepage": "https://github.com/umar-nawaz/kyto-exercise",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Umar",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/umar-nawaz/kyto-exercise",
+        "source": "https://github.com/umar-nawaz/kyto-exercise"
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psa-4": {
+            "Ascii\\": "application/"
+        }
+    }
+}
