@@ -13,7 +13,7 @@ class Application
         if (isset($_GET['shape'])) {
 			$this->controller = $_GET['shape'];
 		}
-
+		/*Get Query Parameters and pass to respective controller*/
 		if ( isset($_SERVER['REQUEST_URI']) ) {
 			$parts = parse_url( $_SERVER['REQUEST_URI'] );
 
@@ -26,6 +26,9 @@ class Application
 		$this->run();
 	}
 
+	/**
+	* Main function of Application to start running application
+	*/
 	public function run()
 	{
 		
@@ -39,6 +42,7 @@ class Application
 				$this->controller->index();
 			}
 			else{
+				// TODO: Add ErrorController and use here.
 				header('location: ' . URL . ' (Please check your request parameters)');
 			}
 		} else {
@@ -46,6 +50,10 @@ class Application
 		}
 	}
 
+	/**
+	* Default behaviour of Application if no Controller or parameters
+	* for example: http://{host}/kyto-exercise/public/index.php
+	*/
 	public function defaultAction()
 	{
 		try {

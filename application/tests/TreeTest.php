@@ -3,30 +3,16 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Shapes
+ * @covers Tree
+ * TODO: Setup phpunit before using it.
  */
 final class TreeTest extends TestCase
 {
     public function testValidTree()
     {
         $this->assertInstanceOf(
-            Star::class,
-            Star::fromString('user@example.com')
-        );
-    }
-
-    public function testInvalidTree()
-    {
-        $this->expectException(InvalidArgumentException::class);
-
-        Email::fromString('invalid');
-    }
-
-    public function testCanBeUsedAsString()
-    {
-        $this->assertEquals(
-            'user@example.com',
-            Email::fromString('user@example.com')
+            Tree::class,
+            Tree::create(5)
         );
     }
 }

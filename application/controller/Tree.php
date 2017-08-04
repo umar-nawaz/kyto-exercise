@@ -26,6 +26,10 @@ class Tree extends Controller
 		$this->renderView($data);
 	}
 
+	/**
+	* Function: Returns a dataset of strings per line to make a Tree shape
+	* It only includes the core shape and not the Wrapping around of '+' charecter
+	*/
 	public function makeTree(): array {
 		$size = $this->size - 1; // 1 top line is optionaly added later in wrapTree()
 	    $starsData = [];
@@ -38,6 +42,10 @@ class Tree extends Controller
 	    return $starsData;
 	}
 
+	/**
+	* Function: Returns a dataset of strings per line to make a Tree shape
+	* This Wraps the shape with '+' charecter
+	*/
 	public function wrapTree( array $treeData ): array {
 		if (count($treeData) > 0) {
 	    	array_unshift($treeData, str_replace($this->brick, $this->wrapChar, $treeData[0]) );

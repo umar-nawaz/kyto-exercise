@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Configuration
+ * Application level Configurations
  */
 define('ENVIRONMENT', 'dev');
 
