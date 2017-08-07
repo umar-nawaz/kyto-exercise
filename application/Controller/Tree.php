@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+namespace Ascii\Controller;
 /**
 * Class ASCII Tree shape
 */

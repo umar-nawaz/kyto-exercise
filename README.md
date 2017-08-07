@@ -6,10 +6,13 @@ A php web application that shows some ASCII star patterns according user's input
 - Currently shows 3 types of shapes and can be easily extended
 - Simple and clean structure
 - Size and Blocks can be given by user 
+
 Avaiable Sizes:
+
 ● S ​[mall]: 5 lines height
 ● M ​[edium]: 7 lines height
 ● L ​[arge]: 11 lines height
+
 Default Shapes:
 - Star
 - Tree
@@ -43,7 +46,7 @@ git clone https://github.com/umar-nawaz/kyto-exercise.git
 Note that input values are case sensitive. 
 
 ## TODOs:
-- [ ] Add php autoload feature and get rid of old require/includes
+- [x] Add php autoload feature and get rid of old require/includes. DONE
 - [ ] Setup PHPUnit for testing (An example class is given in repo)
 - [ ] Figure out why Travis is failing and fix
 - [ ] Add bash script for installing the project 
