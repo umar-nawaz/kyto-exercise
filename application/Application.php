@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+
+namespace Ascii;
 /**
 * Application main class
 */
@@ -22,7 +24,7 @@ class Application
 				$this->params = $query;
 			}
 		}
-
+		
 		$this->run();
 	}
 
@@ -34,10 +36,11 @@ class Application
 		
 		if( isset($this->controller) )
 		{
-			if( file_exists(APP . 'controller/' . $this->controller . '.php'))
+			if( file_exists(APP . 'Controller/' . $this->controller . '.php'))
 			{
-				require APP . 'controller/' . $this->controller . '.php';
-            	$this->controller = $this->controller::create($this->params);
+				//require APP . 'controller/' . $this->controller . '.php';
+				$controller = "Ascii\\Controller\\" . ucfirst($this->controller);
+            	$this->controller = $controller::create($this->params);
 				
 				$this->controller->index();
 			}
@@ -57,14 +60,13 @@ class Application
 	public function defaultAction()
 	{
 		try {
-			include_once 'controller/Constants.php';
-			$shapes = Constants::SHAPES;
+			$shapes = Controller\Constants::SHAPES;
 
 			foreach ($shapes as $key => $controller) {
 				
-				if( file_exists(APP . 'controller/'. $controller . '.php'))
+				if( file_exists(APP . 'Controller/'. $controller . '.php'))
 				{
-					require APP . 'controller/'. $controller . '.php';
+					$controller = "Ascii\\Controller\\" . ucfirst($controller);
 		        	$this->controller = $controller::create($this->params);
 					
 					$this->controller->index();

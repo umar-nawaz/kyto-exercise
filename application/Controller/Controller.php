@@ -4,6 +4,10 @@ declare(strict_types=1);
 /**
 * Shape Controller class
 */
+namespace Ascii\Controller;
+
+use Ascii\View;
+
 abstract class Controller
 {
 
@@ -18,7 +22,6 @@ abstract class Controller
 	protected $view = null;
 
     public function __construct( array $params=null ) {
-		include_once 'controller/Constants.php';
 
 		if (isset($params['size'])) {
 			
@@ -44,9 +47,8 @@ abstract class Controller
 	*/
 	public function renderView(array $data) {
 
-		if ( file_exists(APP . 'view/View.php')) {
-			include_once APP . 'view/View.php';
-			$this->view = new View($data);
+		if ( file_exists(APP . 'View/View.php')) {
+			$this->view = new View\View($data);
 
 			$this->view->render();
 		}

@@ -1,5 +1,5 @@
 <?php
-
+namespace Ascii\View;
 /**
 * Class View for ASCII Shape
 */

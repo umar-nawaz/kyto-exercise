@@ -1,9 +1,10 @@
 <?php
 
+namespace Ascii\Controller;
 /**
 * A sample new Shape Class added to framework for testing.
 */
-class Rectangle extends Controller
+class Box extends Controller
 {
 	function __construct( array $params=null ) {
 		parent::__construct($params);
@@ -11,21 +12,21 @@ class Rectangle extends Controller
 
 	public static function create($size)
 	{
-		return new Rectangle($size);
+		return new Box($size);
 	}
 
 	public function index( array $params=null ) {
-		$data = $this->makeRect();
+		$data = $this->makeBox();
 
 		$this->renderView($data);
 	}
 
-	public function makeRect(): array {
+	public function makeBox(): array {
 	    $starsData = [];
 
 	    for($lineNum = 0; $lineNum < $this->size; $lineNum++) {
 
-	        $starsData[$lineNum] = str_repeat($this->brick, $lineNum);
+	        $starsData[$lineNum] = str_repeat($this->brick, $this->size);
 	    }
 
 	    return $starsData;
