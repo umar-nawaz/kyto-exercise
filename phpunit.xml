@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phpunit bootstrap="vendor/autoload.php"
+	colors="true"
+	verbose="true"
+	stopOnFailure="false">
+	<testsuites>
+		<testsuite name="Test Suite">
+			<directory>application/Tests</directory>
+		</testsuite>
+	</testsuites>
+	<rss>
+		<tree>
+     +
+     X
+    XXX
+   XXXXX
+  XXXXXXX
+ XXXXXXXXX
+XXXXXXXXXXX
+		</tree>
+	</rss>
+</phpunit>
