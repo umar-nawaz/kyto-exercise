@@ -8,15 +8,4 @@
 			<directory>application/Tests</directory>
 		</testsuite>
 	</testsuites>
-	<rss>
-		<tree>
-     +
-     X
-    XXX
-   XXXXX
-  XXXXXXX
- XXXXXXXXX
-XXXXXXXXXXX
-		</tree>
-	</rss>
 </phpunit>
