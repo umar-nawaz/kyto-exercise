@@ -28,7 +28,7 @@ Clone repository to your server
 ```sh
 git clone https://github.com/umar-nawaz/kyto-exercise.git
 
-# composer install  
+composer install  
 
 ```
 
@@ -47,11 +47,15 @@ Note that input values are case sensitive.
 
 ## TODOs:
 - [x] Add php autoload feature and get rid of old require/includes. DONE
-- [ ] Setup PHPUnit for testing (An example class is given in repo)
+- [x] Setup PHPUnit for testing (An example class is given in repo). DONE partially
 - [ ] Figure out why Travis is failing and fix
 - [ ] Add bash script for installing the project 
 
 ## Contribute
 
 Creat your own feature branch, commit open PR. Better to add tests related to your code.
+'''
+#For running tests (if phphunit is alreaddy setup on system), just run following command in root directory.
+phpunit
+'''
  

@@ -21,7 +21,7 @@ abstract class Controller
 	protected $wrapChar = '+';
 	protected $view = null;
 
-    public function __construct( array $params=null ) {
+    function __construct( array $params=null ) {
 
 		if (isset($params['size'])) {
 			
